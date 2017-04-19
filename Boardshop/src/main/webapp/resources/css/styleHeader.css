@@ -1,0 +1,99 @@
+.logo {
+    display: block;
+    margin-left: 400px;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 500px;
+    height: 150px;
+}
+.mainImg {
+	padding-right: 10px;
+	 width: 910px;
+   	 height: 370px !important;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+#headerStyle {
+	background-image: url(/resources/img/cream_dust.png);
+}
+.navbar-default {
+    margin-bottom: 0;
+}
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+#indexContent {
+	background-color: #FFFFFF;
+}
+.navbar-inverse {
+	margin-bottom: 0 !important;
+}
+#marTop {
+	height: 15px  !important;
+	background-color: #FFFFFF;
+}
+#cartHeight {
+	height: 400px  !important;
+}
+#toolsCart {
+	height: 400px  !important;
+}
+#adminPageHeight {
+	height: 400px  !important;
+}
+#cartPageHeight {
+	height: 400px  !important;
+}
+#logRegHeight {
+	height: 400px  !important;
+}
+#mainHeight {
+	height: 100px  !important;
+}
+#productListHeight {
+	height: 100px  !important;
+}
+.icons {
+	height: 40px;
+	width: 40px;
+	margin-left: 10 !important;
+}
+.mainImg {
+	height: 150px;
+}
+#marMainImg {
+	height: 10px  !important;
+}
+#CategAdminPage {
+	height: 20px  !important;
+}
+#ind {
+	height: 750px;
+	width: 1301px;
+}
+#indexContentShopImg {
+	 padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.logo2 {
+	height: 190px;
+	width: 190px;
+	margin-left: 0px !important;
+}
+.padSoc {
+	padding-top: 20px;
+}
+#graphWork {
+	margin-left: 70px !important;
+}
+
+
+

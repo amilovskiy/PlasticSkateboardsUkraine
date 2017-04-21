@@ -24,5 +24,8 @@ public interface CategoryDAO extends JpaRepository<Category, Long>, JpaSpecifica
 	@Query(value="SELECT i FROM Category i LEFT JOIN FETCH i.item",
 			countQuery="SELECT count(i.id) FROM Category i")
 	Page<Category> findAll(Pageable pageable);
+
+	@Query("SELECT c FROM Category c LEFT JOIN FETCH c.item WHERE c.item.id=:id")
+	List<Category> findAllWhereIdItem(@Param("id")Long id);
 	
 }

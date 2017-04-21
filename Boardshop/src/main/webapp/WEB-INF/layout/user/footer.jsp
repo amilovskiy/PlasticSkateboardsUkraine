@@ -7,12 +7,12 @@
 			<div class="col-md-2">
 				<img class="logo2" src="/resources/img/Tkjzka627_A.png"> 
 			</div>
-			<div class="col-md-10">
+			<div id="logo2SocCont" class="col-md-10">
 				<div id="heightIcons" class="row"></div>  
 				<div class="col-md-2"></div>
 				<div id="graphWork" class="col-md-3 text-center">
 					<div class="row"> 
-				 		<b>Мы в социальных сетях :</b><br>
+				 		<b>МЫ В СОЦИАЛЬНЫХ СЕТЯХ :</b><br>
 					</div>
 					<div class="padSoc"></div>
 					<img class="icons" src="/resources/img/facebook_circle-128.png">&nbsp;&nbsp;
@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-md-2"></div>
 				<div id="graphWork" class="col-md-3">
-					<b>Контакты / График работы :</b><br>
+					<b>КОНТАКТЫ / ГРАФИК РАБОТЫ :</b><br>
 					<div class="padSoc"></div>
 					<span class="glyphicon glyphicon-envelope" aria-hidden="true">&nbsp;alexmilovskiy@gmail.com</span><br>
 					<span class="glyphicon glyphicon-earphone" aria-hidden="true">&nbsp;0930293581</span><br>

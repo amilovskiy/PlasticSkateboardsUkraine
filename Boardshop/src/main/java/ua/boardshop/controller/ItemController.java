@@ -49,26 +49,26 @@ public class ItemController {
 	}
 	
 	@RequestMapping
-	public String show(Model model, @PageableDefault(3) Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		model.addAttribute("page",itemService.findAll(filter, pageable));
 		return "admin-item";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Long id, @PageableDefault(3) Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String delete(@PathVariable Long id, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		itemService.delete(id);
 		return "redirect:/admin/item"+getParams(pageable, filter);
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Long id, Model model, @PageableDefault(3) Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String update(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		model.addAttribute("item", itemService.findOne(id));
 		model.addAttribute("items", itemService.findAll());
 		return show(model, pageable, filter);
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("item")@Valid Item form, BindingResult br, Model model, SessionStatus status, @PageableDefault(3) Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String save(@ModelAttribute("item")@Valid Item form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		if(br.hasErrors()){
 			model.addAttribute("page", itemService.findAll());
 			return show(model, pageable, filter);

@@ -10,9 +10,7 @@
     	<div class="collapse navbar-collapse" id="myNavbar">
     	   <div class="container">
 				<div class="col-md-10">
-					<ul class="nav navbar-nav">
-				        <li><a href="/user/shop">Shop</a></li>
-				    </ul>
+					<ul class="nav navbar-nav"></ul>
 				 </div>
                  <ul class="nav navbar-nav">
                  	<sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -34,7 +32,7 @@
 <!-- 		<div id="marTop" class="col-md-12"></div>  --> 
 			<div class="container-fluid">
 				<div class="row">
-					<a href="/user/shop"><img id="ind" src="/resources/img/shopRem.jpg"></a>
+					<a href="/user/shop"><img id="ind" src="/resources/img/shopMain2.jpg"></a>
 				</div>
 			</div>
 		
@@ -60,9 +58,7 @@ Senectus sollicitudin venenatis duis accumsan vitae quisque curabitur libero mas
     	<div class="collapse navbar-collapse" id="myNavbar">
 			<div class="container">
 				<div class="col-md-10">
-					<ul class="nav navbar-nav">
-						<li><a href="#">Тут категорії</a></li>
-					</ul>
+					<ul class="nav navbar-nav"></ul>
 				</div>
                 <ul class="nav navbar-nav">
 					<li><a href="/login">Login</a></li>
@@ -78,7 +74,7 @@ Senectus sollicitudin venenatis duis accumsan vitae quisque curabitur libero mas
 <!-- 		<div id="marTop" class="col-md-12"></div>  --> 
 			<div class="container-fluid">
 				<div class="row">
-					<a href="/user/shop"><img id="ind" src="/resources/img/shopRem.jpg"></a>
+					<a href="/user/shop"><img id="ind" src="/resources/img/shopMain2.jpg"></a>
 				</div>
 			</div>
 		

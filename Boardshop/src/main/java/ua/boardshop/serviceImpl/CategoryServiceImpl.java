@@ -46,6 +46,11 @@ public class CategoryServiceImpl implements CategoryService{
 	public Page<Category> findAll(BasicFilter filter, Pageable pageable) {
 		return categoryDAO.findAll(new CategorySpecification(filter), pageable);
 	}
+
+	@Override
+	public List<Category> findAllWhereIdItem(Long id) {
+		return categoryDAO.findAllWhereIdItem(id);
+	}
 	
 
 }

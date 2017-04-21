@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.editor.CategoryEditor;
+import ua.boardshop.editor.ItemEditor;
 import ua.boardshop.editor.UserEditor;
 import ua.boardshop.entity.Category;
+import ua.boardshop.entity.Item;
 import ua.boardshop.entity.User;
 import ua.boardshop.service.CategoryService;
+import ua.boardshop.service.ItemService;
 import ua.boardshop.service.UserService;
 
 @Controller
@@ -31,29 +34,25 @@ public class ShopController {
 	@Autowired
 	private UserService userService;
 	
-	@ModelAttribute("filter")
-	public BasicFilter getFilter(){
-		return new BasicFilter();
-	}
+	@Autowired
+	private ItemService itemService;
+	
+//	@ModelAttribute("filter")
+//	public BasicFilter getFilter(){
+//		return new BasicFilter();
+//	}
 	
 	@InitBinder("shop")
 	protected void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Item.class, new ItemEditor(itemService));
 		binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
 		binder.registerCustomEditor(User.class, new UserEditor(userService));
 	}
 	
 	@RequestMapping
-	public String show(Model model, @PageableDefault(6) Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
-		model.addAttribute("page", categoryService.findAll(filter, pageable));
-		model.addAttribute("amount", userService.getAmountCommodities());
+	public String show(Model model){
+		model.addAttribute("items", itemService.findAll());
 		return "user-shop";
 	}
-	
-	@GetMapping("/notUser")
-	public String showNotUser(Model model, @PageableDefault(6) Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
-		model.addAttribute("page", categoryService.findAll(filter, pageable));
-		return "user-shop";
-	}
-	
 	
 }

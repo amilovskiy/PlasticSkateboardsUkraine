@@ -87,6 +87,10 @@ body {
 	height: 190px;
 	width: 190px;
 	margin-left: 0px !important;
+	padding-left: 15px;
+}
+#logo2SocCont {
+	padding: 0px !important;
 }
 .padSoc {
 	padding-top: 20px;

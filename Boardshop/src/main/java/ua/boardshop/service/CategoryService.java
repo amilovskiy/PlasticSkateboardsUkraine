@@ -16,4 +16,5 @@ public interface CategoryService {
 	public void delete(Long id);
 	Category findOne(String name);
 	Page<Category> findAll(BasicFilter filter, Pageable pageable);
+	List<Category> findAllWhereIdItem(Long id);
 }

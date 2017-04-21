@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,7 +13,7 @@ public class Item extends AbstractEntity{
 	private String name;
 
 	@OneToMany(
-	mappedBy="item")
+	mappedBy="item", fetch = FetchType.EAGER)
 	private List<Category> categories = new ArrayList<Category>();
 	
 	public Item(String name) {

@@ -12,7 +12,6 @@
                                <li><a href="/admin/category">Category</a></li>
                                <li class="active"><a href="/admin/commodity">Commodity</a></li>
                                <li><a href="/admin/producer">Producer</a></li>
-                               <li><a href="/">Index</a></li>
                             </ul>
                         </div>
                     </div>

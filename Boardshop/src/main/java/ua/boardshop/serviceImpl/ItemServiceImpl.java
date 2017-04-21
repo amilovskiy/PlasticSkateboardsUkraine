@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.entity.Category;
 import ua.boardshop.entity.Item;
 import ua.boardshop.repository.ItemDAO;
 import ua.boardshop.service.ItemService;
@@ -48,5 +49,4 @@ public class ItemServiceImpl implements ItemService{
 	public Page<Item> findAll(BasicFilter filter, Pageable pageable) {
 		return itemDAO.findAll(new ItemSpecification(filter), pageable);
 	}
-
 }

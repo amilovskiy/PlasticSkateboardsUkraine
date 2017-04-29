@@ -21,7 +21,7 @@ body {
     padding-right: 0 !important;
 }
 #headerStyle {
-	background-image: url(/resources/img/cream_dust.png);
+	background-image: url(/resources/img/Solid_white.svg.png);
 }
 .navbar-default {
     margin-bottom: 0;
@@ -96,8 +96,8 @@ body {
 	padding-top: 20px;
 }
 #graphWork {
-	margin-left: 70px !important;
+	margin-left: 190px !important;
 }
-
-
-
+#socFoot {
+	margin-left: 120px !important;
+}

@@ -3,30 +3,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="/WEB-INF/custom.tld" prefix="custom"%>
-<link href="/resources/css/styleHeader.css" rel="stylesheet"/>
+<link href="/resources/css/mainStyle.css" rel="stylesheet"/>
 
 <div class="row">
-<c:if test="${param.fail}">
-	<div class="col-sm-12 col-xs-12 text-center">
-		<h2><b>Fail to autorize</b></h2>
+	<c:if test="${param.fail}">
+		<div class="col-sm-12 col-xs-12 text-center">
+			<h2><b>Fail to autorize</b></h2>
+		</div>
+	</c:if>
+</div>
+ 
+<nav class="navbar navbar-inverse" role="navigation">
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<div class="container">
+			<div class="col-md-10"></div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/login">Login</a></li>
+				<li><a href="/registration">Registration</a></li>
+			</ul>
+		</div>
 	</div>
-</c:if>
-</div>
- 	<nav class="navbar navbar-inverse" role="navigation">
-                    <div class="collapse navbar-collapse" id="myNavbar">
-				        <div class="container">
-				        <div class="col-md-10"></div>
-                            <ul class="nav navbar-nav">
-                               <li class="active"><a href="/login">Login</a></li>
-                               <li><a href="/registration">Registration</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+</nav>
 
-<div id="marTop" class="col-md-12">
-	<div class="col-md-6"></div>
-</div>
+<div id="marTop" class="col-md-12"></div>
 
 <div id="indexContent" class="col-md-12">
 	<div class="col-md-12">

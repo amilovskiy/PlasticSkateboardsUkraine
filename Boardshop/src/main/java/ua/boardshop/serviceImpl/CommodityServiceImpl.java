@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ua.boardshop.dto.filter.BasicFilter;
-import ua.boardshop.dto.filter.ShopFilter;
 import ua.boardshop.dto.form.CommodityForm;
 import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.User;

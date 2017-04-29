@@ -38,7 +38,6 @@ public class ProductPageController {
 	public String show(@PathVariable Long id, Model model){
 		model.addAttribute("commodity", commodityService.findOne(id));
 		model.addAttribute("user", userService.getCurrentUser());
-		model.addAttribute("amount", userService.getAmountCommodities());
 		return "user-productPage";
 	}
 	

@@ -6,7 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import ua.boardshop.dto.filter.BasicFilter;
-import ua.boardshop.dto.filter.ShopFilter;
 import ua.boardshop.dto.form.CommodityForm;
 import ua.boardshop.entity.Commodity;
 

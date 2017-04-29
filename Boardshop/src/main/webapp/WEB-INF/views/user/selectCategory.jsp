@@ -12,14 +12,14 @@
     	<div class="collapse navbar-collapse" id="myNavbar">
 			<div class="container">
 				<div class="col-md-10">
-					<ul class="nav navbar-nav">
-						<c:forEach items="${items}" var="item">
+					<ul class="nav navbar-nav">	
+				    	<c:forEach items="${items}" var="item">
 							<li role="presentation" class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+   								<a href="#" class="dropdown-toggle" data-toggle="dropdown"
    									aria-haspopup="true" aria-expanded="false">${item.name}</a>
     							<ul class="dropdown-menu">
     								<c:forEach items="${item.categories}" var="category">  
-    									<li><a href="/user/shop/${category.id}">${category.name}</a></li>   
+    									<li><a href="#">${category.name}</a></li>   
        	 							</c:forEach> 
     							</ul>
     						</li>
@@ -39,38 +39,30 @@
             </div>
        </div>
 	</nav>
-	
-	<div id="marTop" class="col-md-12"></div>     
+	<div id="marTop" class="col-md-12"></div>    
 	
 	<div id="indexContent" class="col-md-12">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10">
-					<c:forEach items="${page.content}" var="commodity">								
+					<c:forEach items="${commodities}" var="commodity">								
 						<div class="row">
 							<div class="col-md-3 col-xs-3"><a href="/user/productPage/${commodity.id}">
 								<img class="img-rounded" width="100%" src="/images/commodity/${commodity.id}
-									.jpg?version=${commodity.version}"></a>
-							</div>
-							<div class="col-md-5"><div class="row"><h2><b><a href="/user/shop/productPage/${commodity.id}">
-								${commodity.name}</a></b></h2></div><div class="row"><h4>${commodity.price}<b>
-								&#8372;</b></h4></div>${commodity.description}
-							</div>										
+									.jpg?version=${commodity.version}"></a></div>
+							<div class="col-md-5"><div class="row"><h2><b><a href="/user/productPage/${commodity.id}">
+								${commodity.name}</a></b></h2></div><div class="row"><h4>${commodity.price}<b> &#8372;</b></h4></div>
+									${commodity.description}</div>										
 						</div>
 						<div id="marTop" class="col-md-12"></div>
 					</c:forEach>
 				</div>
-				<div class="col-md-2">
+<!-- 				<div class="col-md-2">
 					<a class="btn btn-success btn-lg" href="/cart">Cart</a>&nbsp;<b>${amount}</b>
-				</div>
+				</div>  -->
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-xs-12 text-center">
-				<custom:pageable page="${page}" cell="<li></li>" container="<ul class='pagination'></ul>" />
-			</div>
-		</div>		
-	</div>  
+	</div>	   
 </sec:authorize>
 
 <sec:authorize access="!isAuthenticated()">
@@ -99,35 +91,29 @@
 			</div>
 		</div>
 	</nav>
-  
-  	<div id="marTop" class="col-md-12"></div>
+	
+	<div id="marTop" class="col-md-12"></div>
   
 	<div id="indexContent" class="col-md-12">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10">
-					<c:forEach items="${page.content}" var="commodity">								
+					<c:forEach items="${commodities}" var="commodity">								
 						<div class="row">
 							<div class="col-md-3 col-xs-3"><a href="/user/productPage/${commodity.id}">
 								<img class="img-rounded" width="100%" src="/images/commodity/${commodity.id}
 									.jpg?version=${commodity.version}"></a></div>
 							<div class="col-md-5"><div class="row"><h2><b><a href="/user/productPage/${commodity.id}">
-								${commodity.name}</a></b></h2></div><div class="row"><h4>${commodity.price}<b>
-								&#8372;</b></h4></div>${commodity.description}</div>										
+								${commodity.name}</a></b></h2></div><div class="row"><h4>${commodity.price}<b> &#8372;</b></h4></div>
+									${commodity.description}</div>										
 						</div>
 						<div id="marTop" class="col-md-12"></div>
 					</c:forEach>
 				</div>
-				<div class="col-md-2">
+<!-- 				<div class="col-md-2">
 					<a class="btn btn-success btn-lg" href="/cart">Cart</a>&nbsp;<b>${amount}</b>
-				</div>
+				</div>  -->
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-xs-12 text-center">
-				<custom:pageable page="${page}" cell="<li></li>" container="<ul class='pagination'></ul>" />
-			</div>
-		</div>		
-	</div> 
-</sec:authorize>                      
-                
+	</div>	
+</sec:authorize>	

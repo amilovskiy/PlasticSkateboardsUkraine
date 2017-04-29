@@ -10,7 +10,7 @@
 			<div id="logo2SocCont" class="col-md-10">
 				<div id="heightIcons" class="row"></div>  
 				<div class="col-md-2"></div>
-				<div id="graphWork" class="col-md-3 text-center">
+				<div id="socFoot" class="col-md-3 text-center">
 					<div class="row"> 
 				 		<b>МЫ В СОЦИАЛЬНЫХ СЕТЯХ :</b><br>
 					</div>

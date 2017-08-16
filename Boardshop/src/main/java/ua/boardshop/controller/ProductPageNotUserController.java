@@ -15,7 +15,7 @@ import ua.boardshop.entity.Commodity;
 import ua.boardshop.service.CommodityService;
 
 @Controller
-@RequestMapping("/user/productPage/notUser")
+@RequestMapping("/user/simple_product_page")
 @SessionAttributes("productPage")
 public class ProductPageNotUserController {
 
@@ -30,6 +30,6 @@ public class ProductPageNotUserController {
 	@GetMapping("{id}")
 	public String show(@PathVariable Long id, Model model){
 		model.addAttribute("commodity", commodityService.findOne(id));
-		return "user-productPage";
+		return "user-productPageNotUser";
 	}
 }

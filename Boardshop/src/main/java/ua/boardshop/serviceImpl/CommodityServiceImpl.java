@@ -3,6 +3,7 @@ package ua.boardshop.serviceImpl;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.apache.commons.digester.plugins.strategies.FinderSetProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.dto.filter.ShopFilter;
 import ua.boardshop.dto.form.CommodityForm;
 import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.User;
@@ -19,6 +21,7 @@ import ua.boardshop.service.CommodityService;
 import ua.boardshop.service.FileWriter;
 import ua.boardshop.service.FileWriter.Folder;
 import ua.boardshop.service.specification.CommoditySpecification;
+import ua.boardshop.service.specification.CommoditySpecificationBasic;
 
 @Service
 public class CommodityServiceImpl implements CommodityService{
@@ -49,8 +52,13 @@ public class CommodityServiceImpl implements CommodityService{
 	}
 
 	@Override
-	public Page<Commodity> findAll(BasicFilter filter, Pageable pageable) {
+	public Page<Commodity> findAll(ShopFilter filter, Pageable pageable) {
 		return commodityDAO.findAll(new CommoditySpecification(filter),pageable);
+	}
+
+	@Override
+	public Page<Commodity> findAll(BasicFilter filter, Pageable pageable) {
+		return commodityDAO.findAll(new CommoditySpecificationBasic(filter),pageable);
 	}
 	
 	@Override
@@ -63,6 +71,10 @@ public class CommodityServiceImpl implements CommodityService{
 		commodity.setDescription(form.getDescription());
 		commodity.setCategory(form.getCategory());
 		commodity.setProducer(form.getProducer());
+		commodity.setColor(form.getColor());
+		commodity.setWheel(form.getWheel());
+		commodity.setTruck(form.getTruck());
+		commodity.setDeck(form.getDeck());
 		commodity = commodityDAO.saveAndFlush(commodity);
 		if(fileWriter.write(Folder.COMMODITY, form.getFile(), commodity.getId())){
 			if (commodity.getVersion()==null) commodity.setVersion(0);
@@ -78,9 +90,14 @@ public class CommodityServiceImpl implements CommodityService{
 		form.setId(commodity.getId());
 		form.setName(commodity.getName());
 		form.setPrice(String.valueOf(commodity.getPrice()));
+		form.setCount(String.valueOf(commodity.getCount()));
 		form.setDescription(commodity.getDescription());
 		form.setProducer(commodity.getProducer());
 		form.setCategory(commodity.getCategory());
+		form.setColor(commodity.getColor());
+		form.setWheel(commodity.getWheel());
+		form.setTruck(commodity.getTruck());
+		form.setDeck(commodity.getDeck());
 		return form;
 	}
 
@@ -110,11 +127,21 @@ public class CommodityServiceImpl implements CommodityService{
 		float price = 0;
 		List<Commodity> commodities = findList(id);
 		for (Commodity commodity : commodities) {
-			priceB = commodity.getPrice();
+			int a = commodity.getPrice().intValue() * commodity.getCount().intValue();
+			BigDecimal co = new BigDecimal(a);
+			priceB = co;
 			price += priceB.floatValue();
 		}
 		String format = String.format("%.2f", price);
 		return format;
+	}
+
+	@Override
+	public void findAndDelete(Long id, Commodity commodity) {
+		User user = userDAO.findById(id);
+		List<Commodity> commodities = user.getCommodities();
+		commodities.remove(commodity);
+		userDAO.save(user);
 	}
 
 }

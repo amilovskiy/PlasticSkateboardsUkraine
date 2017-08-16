@@ -8,15 +8,23 @@ public class ShopFilter {
 	
 	private String search = "";
 	
-	private String maxPrice = "";
+	private String max = "";
 	
-	private String minPrice = "";
+	private String min = "";
 	
-	private BigDecimal max;
+	private BigDecimal maxValue;
 	
-	private BigDecimal min;
+	private BigDecimal minValue;
 
 	private List<Long> producerIds = new ArrayList<>();
+	
+	private List<Long> colorIds = new ArrayList<>();
+	
+	private List<Long> deckIds = new ArrayList<>();
+	
+	private List<Long> wheelIds = new ArrayList<>();
+	
+	private List<Long> truckIds = new ArrayList<>();
 	
 	public String getSearch() {
 		return search;
@@ -34,36 +42,68 @@ public class ShopFilter {
 		this.producerIds = producerIds;
 	}
 
-	public String getMaxPrice() {
-		return maxPrice;
-	}
-
-	public void setMaxPrice(String maxPrice) {
-		this.maxPrice = maxPrice;
-	}
-
-	public String getMinPrice() {
-		return minPrice;
-	}
-
-	public void setMinPrice(String minPrice) {
-		this.minPrice = minPrice;
-	}
-	
-	public BigDecimal getMax() {
+	public String getMax() {
 		return max;
 	}
 
-	public void setMax(BigDecimal max) {
+	public void setMax(String max) {
 		this.max = max;
 	}
 
-	public BigDecimal getMin() {
+	public String getMin() {
 		return min;
 	}
 
-	public void setMin(BigDecimal min) {
+	public void setMin(String min) {
 		this.min = min;
+	}
+
+	public BigDecimal getMaxValue() {
+		return maxValue;
+	}
+
+	public void setMaxValue(BigDecimal maxValue) {
+		this.maxValue = maxValue;
+	}
+
+	public BigDecimal getMinValue() {
+		return minValue;
+	}
+
+	public void setMinValue(BigDecimal minValue) {
+		this.minValue = minValue;
+	}
+
+	public List<Long> getColorIds() {
+		return colorIds;
+	}
+
+	public void setColorIds(List<Long> colorIds) {
+		this.colorIds = colorIds;
+	}
+
+	public List<Long> getDeckIds() {
+		return deckIds;
+	}
+
+	public void setDeckIds(List<Long> deckIds) {
+		this.deckIds = deckIds;
+	}
+
+	public List<Long> getWheelIds() {
+		return wheelIds;
+	}
+
+	public void setWheelIds(List<Long> wheelIds) {
+		this.wheelIds = wheelIds;
+	}
+
+	public List<Long> getTruckIds() {
+		return truckIds;
+	}
+
+	public void setTruckIds(List<Long> truckIds) {
+		this.truckIds = truckIds;
 	}
 
 	

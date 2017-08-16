@@ -17,7 +17,7 @@ public class Category extends AbstractEntity{
 	mappedBy="category")
 	private List<Commodity> commodities = new ArrayList<Commodity>();
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Item item;
 	
 	public Category(String name) {

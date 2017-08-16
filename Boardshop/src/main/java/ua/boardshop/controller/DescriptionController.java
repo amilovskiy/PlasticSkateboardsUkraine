@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.boardshop.editor.CategoryEditor;
+import ua.boardshop.editor.ColorEditor;
 import ua.boardshop.editor.ProducerEditor;
 import ua.boardshop.entity.Category;
+import ua.boardshop.entity.Color;
 import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Producer;
 import ua.boardshop.service.CategoryService;
+import ua.boardshop.service.ColorService;
 import ua.boardshop.service.CommodityService;
 import ua.boardshop.service.ProducerService;
 
@@ -34,10 +37,14 @@ public class DescriptionController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@Autowired
+	private ColorService colorService;
+	
 	@InitBinder("description")
 	protected void bind(WebDataBinder binder){
 		binder.registerCustomEditor(Producer.class, new ProducerEditor(producerService));
 		binder.registerCustomEditor(Category.class, new CategoryEditor(categoryService));
+		binder.registerCustomEditor(Color.class, new ColorEditor(colorService));
 	}
 	
 	@ModelAttribute("description")

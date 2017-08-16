@@ -9,21 +9,37 @@
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<div class="container">
-				<div class="col-md-10">
+				<div class="col-md-9">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/user/shop">Shop</a></li>
+						<li><a href="/user/shop">Shop</a></li>
 					</ul>
 				</div>
-				<ul class="nav navbar-nav">
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<li><a href="/admin">Admin</a></li>
-					</sec:authorize>
-				</ul>
-				<div id="logout">
-					<form:form action="/logout" method="POST">
-						<button class="btn btn-danger navbar-btn">Logout</button>
-					</form:form>
-				</div>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+                	<div class="col-md-2">
+	                	 <ul class="nav navbar-nav">
+							<a href="/admin"><button class="btn btn-primary navbar-btn">Admin</button></a>&nbsp;&nbsp;
+	                 	 </ul>
+	                 	 <div id="logout">
+	                 		<form:form action="/logout" method="POST">
+	                    		<button class="btn btn-danger navbar-btn">Logout</button>
+	                    	</form:form>
+	                 	 </div>
+                 	</div>
+                 </sec:authorize>
+                 <sec:authorize access="hasRole('ROLE_USER')">
+                	<div class="col-md-1"></div>
+                	<div class="col-md-1">
+	                 	 <div id="logout">
+	                 		<form:form action="/logout" method="POST">
+	                    		<button class="btn btn-danger navbar-btn">Logout</button>
+	                    	</form:form>
+	                 	 </div>
+                 	</div>
+                 </sec:authorize>
+                <div class="col-md-1">
+				 	<a href="/cart"><span style="margin-top: 17px; color: white;" class="glyphicon glyphicon-shopping-cart"></span></a>
+				 	<span style="color: white;">(${amount})</span>
+				 </div>
 			</div>
 		</div>
 	</nav>
@@ -33,142 +49,38 @@
 	<div id="indexContent" class="col-md-12">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10">
-					<b>Image</b>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="col-md-5 col-xs-5"><img class="img-rounded" width="100%" 
+				<div class="col-md-4">
+					<img class="img-rounded" width="400px" 
 								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}">
-							</div> 
-						</div>
-					</div> 
-					<b>Name</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.name}" escapeXml="false"/>
-						</div>
-					</div>
-					<b>Price</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.price}" escapeXml="false"/>
-						</div>
-					</div>
-					<b>Description</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.description}" escapeXml="false"/>
-						</div>
-					</div>
-					<b>Producer</b>
-					<div class="row">
-						<div class="col-md-5">
-							<div class="col-md-3 col-xs-3"><img class="img-rounded" width="100%" 
-								src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">
-							</div>
-						</div>
-					</div>
-					<b>Category</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.category.name}" escapeXml="false"/>
-						</div>
-					</div>
-					<div id="marTop" class="col-md-12"></div> 
-					<div class="row">
-						<a class="btn btn-warning btn-lg" href="/user/productPage/buy/${commodity.id}/${user.id}">Buy</a>
-					</div>	
-					<c:forEach items="${commodities}" var="commodity">		
-						<div class="col-md-3 col-xs-3">${commodity}</div>
-					</c:forEach>	
-					<div id="productListHeight" class="col-md-6"></div>		
 				</div>
-				<div class="col-md-2">
-					<a class="btn btn-success btn-lg" href="/cart">Cart</a>&nbsp;<b>${amount}</b>
+				<div class="col-md-4">
+					<br>
+					<h1><b><c:out value="${commodity.name}" escapeXml="false"/></b></h1>
+					<h3><b><c:out value="${commodity.price}" escapeXml="false"/>&#160;$</b></h3><br>
+					<a class="btn btn-warning btn-lg" href="/user/product_page/buy/${commodity.id}/${user.id}">Buy</a><br>
+					<h2 style="color: #D3D3D3;"><b>Description</b></h2>
+					<b>Deck :</b>
+					<c:out value="${commodity.deck.name}" escapeXml="false"/><br>
+					<b>Truck :</b>
+					<c:out value="${commodity.truck.name}" escapeXml="false"/><br>
+					<b>Wheels :</b>
+					<c:out value="${commodity.wheel.name}" escapeXml="false"/><br>
+					<b>Color :</b>
+					<c:out value="${commodity.color.name}" escapeXml="false"/><br>
+					<b>Category :</b>
+					<c:out value="${commodity.category.name}" escapeXml="false"/><br>
+				</div>
+				<div class="col-md-4">
+					<br>
+					<h2 style="color: #D3D3D3;"><b>About <c:out value="${commodity.name}" escapeXml="false"/></b></h2>
+					<c:out value="${commodity.description}" escapeXml="false"/>
+					<h2 style="color: #D3D3D3;"><b>Producer :</b></h2>
+					<img class="img-rounded" width="200px" 
+								src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">
+					
 				</div>
 			</div>
 		</div>	
 	</div>
-</sec:authorize>
-
-<sec:authorize access="!isAuthenticated()">
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<div class="container">
-				<div class="col-md-10">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="/user/shop/notUser">Shop</a></li>
-					</ul>
-				</div>
-				<ul class="nav navbar-nav">
-					<li><a href="/login">Login</a></li>
-					<li><a href="/registration">Registration</a></li> 
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<div id="marTop" class="col-md-12"></div> 
-
-	<div id="indexContent" class="col-md-12">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-11">
-					<b>Image</b>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="col-md-5 col-xs-5"><img class="img-rounded" width="100%" 
-								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}">
-							</div> 
-						</div>
-					</div> 
-					<b>Name</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.name}" escapeXml="false"/>
-						</div>
-					</div>
-					<b>Price</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.price}" escapeXml="false"/>
-						</div>
-					</div>
-					<b>Description</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.description}" escapeXml="false"/>
-						</div>
-					</div>
-					<b>Producer</b>
-					<div class="row">
-						<div class="col-md-5">
-							<div class="col-md-3 col-xs-3"><img class="img-rounded" width="100%" 
-								src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">
-							</div>
-						</div>
-					</div>
-					<b>Category</b>
-					<div class="row">
-						<div class="col-md-5">
-							<c:out value="${commodity.category.name}" escapeXml="false"/>
-						</div>
-					</div>
-					<div id="marTop" class="col-md-12"></div> 	
-					<div class="col-md-7">
-						<div class="jumbotron">
-					  		<h3>You want to buy something?</h3>
-					 		 <p>Please sign up or enter login</p>
-					  		 <p><a class="btn btn-info btn-lg" href="/registration" role="button">Sign Up</a>
-					  		 <a class="btn btn-warning btn-lg" href="/login" role="button">Login</a></p>
-						</div>	
-					</div>
-					<c:forEach items="${commodities}" var="commodity">		
-						<div class="col-md-3 col-xs-3">${commodity}</div>
-					</c:forEach>	
-					<div id="productListHeight" class="col-md-6"></div>		
-				</div>
-			</div>
-		</div>	
-	</div>
+	<div id="productListHeight" class="col-md-6"></div>
 </sec:authorize>

@@ -12,6 +12,10 @@
 				<li><a href="/admin/category">Category</a></li>
 				<li class="active"><a href="/admin/commodity">Commodity</a></li>
 				<li><a href="/admin/producer">Producer</a></li>
+				<li><a href="/admin/color">Color</a></li>
+				<li><a href="/admin/wheel">Wheel</a></li>
+				<li><a href="/admin/truck">Truck</a></li>
+				<li><a href="/admin/deck">Deck</a></li>
 			</ul>
 		</div>
 	</div>
@@ -39,6 +43,42 @@
 			<c:out value="${commodity.price}" escapeXml="false"/>
 		</div>
 	</div>
+	<b>Item</b>
+	<div class="row">
+		<div class="col-md-5">
+			<c:out value="${commodity.category.item.name}" escapeXml="false"/>
+		</div>
+	</div>
+	<b>Category</b>
+	<div class="row">
+		<div class="col-md-5">
+			<c:out value="${commodity.category.name}" escapeXml="false"/>
+		</div>
+	</div>
+	<b>Color</b>
+	<div class="row">
+		<div class="col-md-5">
+			<c:out value="${commodity.color.name}" escapeXml="false"/>
+		</div>
+	</div>
+	<b>Deck</b>
+	<div class="row">
+		<div class="col-md-5">
+			<c:out value="${commodity.deck.name}" escapeXml="false"/>
+		</div>
+	</div>
+	<b>Truck</b>
+	<div class="row">
+		<div class="col-md-5">
+			<c:out value="${commodity.truck.name}" escapeXml="false"/>
+		</div>
+	</div>
+	<b>Wheel</b>
+	<div class="row">
+		<div class="col-md-5">
+			<c:out value="${commodity.wheel.name}" escapeXml="false"/>
+		</div>
+	</div>
 	<b>Description</b>
 	<div class="row">
 		<div class="col-md-5">
@@ -50,12 +90,6 @@
 		<div class="col-md-5">
 			<div class="col-md-3 col-xs-3"><img class="img-rounded" width="100%" src="/images/producer/${commodity.producer.id}
 				.jpg?version=${commodity.producer.version}"></div>
-		</div>
-	</div>
-	<b>Category</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.category.name}" escapeXml="false"/>
 		</div>
 	</div>
 	

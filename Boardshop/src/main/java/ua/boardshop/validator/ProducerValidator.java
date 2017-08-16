@@ -7,7 +7,7 @@ import org.springframework.validation.Validator;
 import ua.boardshop.entity.Producer;
 import ua.boardshop.service.ProducerService;
 
-public class ProducerValidator implements Validator{
+public class ProducerValidator implements Validator {
 
 	private final ProducerService producerService;
 

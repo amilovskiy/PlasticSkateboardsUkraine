@@ -18,7 +18,7 @@ import ua.boardshop.service.CommodityService;
 import ua.boardshop.service.UserService;
 
 @Controller
-@RequestMapping("/user/productPage")
+@RequestMapping("/user/product_page")
 @SessionAttributes("productPage")
 public class ProductPageController {
 
@@ -36,6 +36,7 @@ public class ProductPageController {
 	
 	@GetMapping("{id}")
 	public String show(@PathVariable Long id, Model model){
+		model.addAttribute("amount", userService.findAm(userService.getCurrentUser().getId()));
 		model.addAttribute("commodity", commodityService.findOne(id));
 		model.addAttribute("user", userService.getCurrentUser());
 		return "user-productPage";
@@ -45,7 +46,7 @@ public class ProductPageController {
 	public String buy(@PathVariable Long id, @PathVariable Long userId, Model model){
 		model.addAttribute("commodity", commodityService.findOne(id));
 		model.addAttribute("user", userService.order(id, userId));
-		return "redirect:/user/productPage/{id}";
+		return "redirect:/user/product_page/{id}";
 	}
-
+	
 }

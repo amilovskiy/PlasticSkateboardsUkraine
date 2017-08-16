@@ -9,12 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.sound.midi.Track;
 
 @Entity
 public class Commodity extends AbstractEntity{
 
 	private String name;
 	private BigDecimal price;
+	private Integer count;
 	@Column(length=200000)
 	private String description;
 	@Column(name = "version", nullable = true)
@@ -25,6 +28,18 @@ public class Commodity extends AbstractEntity{
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Category category;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Deck deck;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Truck truck;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Wheel wheel;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Color color;
 	
 	@ManyToMany(mappedBy="commodities")
 	private List<User> users= new ArrayList<User>();
@@ -53,6 +68,14 @@ public class Commodity extends AbstractEntity{
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 
 	public String getDescription() {
@@ -94,10 +117,43 @@ public class Commodity extends AbstractEntity{
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
+	
+	public Deck getDeck() {
+		return deck;
+	}
+
+	public void setDeck(Deck deck) {
+		this.deck = deck;
+	}
+
+	public Truck getTruck() {
+		return truck;
+	}
+
+	public void setTruck(Truck truck) {
+		this.truck = truck;
+	}
+
+	public Wheel getWheel() {
+		return wheel;
+	}
+
+	public void setWheel(Wheel wheel) {
+		this.wheel = wheel;
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color color) {
+		this.color = color;
+	}
 
 	@Override
 	public String toString() {
-		return "Commodity [name=" + name + ", price=" + price + ", description=" + description + "]";
+		return "Commodity [name=" + name + ", price=" + price + ", description=" + description
+				+ "]";
 	}
 	
 }

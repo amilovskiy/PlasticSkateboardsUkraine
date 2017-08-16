@@ -46,6 +46,11 @@ public class IndexController {
 		return "user-index";
 	}
 	
+	@GetMapping("/admin")
+	public String admin(Model model){
+		return "admin-admin";
+	}
+	
 	@GetMapping("/registration")
 	public String registration(Model model){
 		model.addAttribute("user", new User());

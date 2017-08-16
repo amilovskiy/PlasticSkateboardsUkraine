@@ -19,7 +19,7 @@
    									aria-haspopup="true" aria-expanded="false">${item.name}</a>
     							<ul class="dropdown-menu">
     								<c:forEach items="${item.categories}" var="category">  
-    									<li><a href="#">${category.name}</a></li>   
+    									<li><a href="/user/shop/${category.id}">${category.name}</a></li>   
        	 							</c:forEach> 
     							</ul>
     						</li>

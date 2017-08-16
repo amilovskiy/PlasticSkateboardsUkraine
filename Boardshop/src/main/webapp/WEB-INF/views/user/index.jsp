@@ -9,19 +9,38 @@
 	<nav class="navbar navbar-inverse" role="navigation">
     	<div class="collapse navbar-collapse" id="myNavbar">
     	   <div class="container">
-				<div class="col-md-10">
-					<ul class="nav navbar-nav"></ul>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+					<div class="col-md-9">
+						<ul class="nav navbar-nav"></ul>
+				 	</div>
+                	<div class="col-md-2">
+	                	 <ul class="nav navbar-nav">
+							<a href="/admin"><button class="btn btn-primary navbar-btn">Admin</button></a>
+							&nbsp;&nbsp;
+	                 	 </ul>
+	                 	 <div id="logout">
+	                 		<form:form action="/logout" method="POST">
+	                    		<button class="btn btn-danger navbar-btn">Logout</button>
+	                    	</form:form>
+	                 	 </div>
+                 	</div>
+                 </sec:authorize>
+                 <sec:authorize access="hasRole('ROLE_USER')">
+					<div class="col-md-10">
+						<ul class="nav navbar-nav"></ul>
+				 	</div>
+                 	<div class="col-md-1">
+	                 	<ul class="nav navbar-nav"></ul>
+	                 		<div id="logout">
+	                 			<form:form action="/logout" method="POST">
+	                    			<button class="btn btn-danger navbar-btn">Logout</button>
+	                    		</form:form>
+	                 		</div>
+                 	</div>
+                 </sec:authorize>
+                 <div class="col-md-1">
+				 	<a href="/cart"><span style="margin-top: 17px; color: white;" class="glyphicon glyphicon-shopping-cart"></span></a>
 				 </div>
-                 <ul class="nav navbar-nav">
-					<sec:authorize access="hasRole('ROLE_ADMIN')">
-						<a href="/admin"><button class="btn btn-primary navbar-btn">Admin</button></a>&nbsp;&nbsp;
-		 			</sec:authorize>
-                 </ul>
-                 <div id="logout">
-                 	<form:form action="/logout" method="POST">
-                    	<button class="btn btn-danger navbar-btn">Logout</button>
-                    </form:form>
-                 </div>
           	</div>
          </div>
     </nav>
@@ -89,7 +108,7 @@
 	<div id="indexContentShopImg" class="col-md-12">  
 		<div class="container-fluid">
 			<div class="row">
-				<a href="/user/shop"><img id="ind" src="/resources/img/shopMain2.jpg"></a>
+				<a href="/user/simple_shop"><img id="ind" src="/resources/img/shopMain2.jpg"></a>
 			</div>
 		</div>
 		

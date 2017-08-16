@@ -13,6 +13,10 @@
 				<li><a href="/admin/category">Category</a></li>
 				<li class="active"><a href="/admin/commodity">Commodity</a></li>
 				<li><a href="/admin/producer">Producer</a></li>
+				<li><a href="/admin/color">Color</a></li>
+				<li><a href="/admin/wheel">Wheel</a></li>
+				<li><a href="/admin/truck">Truck</a></li>
+				<li><a href="/admin/deck">Deck</a></li>
 			</ul>
 		</div>
 	</div>
@@ -70,6 +74,34 @@
 					<div class="col-sm-5">
 						<form:select class="form-control" path="category" id="category" 
 							items="${categories}" itemLabel="name" itemValue="id"/>
+					</div>
+				</div> 
+				<div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Color</label>
+					<div class="col-sm-5">
+						<form:select class="form-control" path="color" id="color" 
+							items="${colors}" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="deck" class="col-sm-2 control-label">Deck</label>
+					<div class="col-sm-5">
+						<form:select class="form-control" path="deck" id="deck" 
+							items="${decks}" itemLabel="name" itemValue="id"/>
+					</div>
+				</div> 
+				<div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Truck</label>
+					<div class="col-sm-5">
+						<form:select class="form-control" path="truck" id="truck" 
+							items="${trucks}" itemLabel="name" itemValue="id"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="color" class="col-sm-2 control-label">Wheel</label>
+					<div class="col-sm-5">
+						<form:select class="form-control" path="wheel" id="wheel" 
+							items="${wheels}" itemLabel="name" itemValue="id"/>
 					</div>
 				</div> 
 				<div class="form-group">

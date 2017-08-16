@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -36,7 +37,7 @@ public class CartController {
 	@GetMapping
 	public String show(Model model){
 		model.addAttribute("user", userService.getCurrentUser());
-//		model.addAttribute("same", userService.findSame(userService.getCurrentUser().getId()));
+		model.addAttribute("amount", userService.findAm(userService.getCurrentUser().getId()));
 		model.addAttribute("commodities", commodityService.findList(userService.getCurrentUser().getId()));
 		model.addAttribute("price", commodityService.findTotalPrice(userService.getCurrentUser().getId()));
 		return "user-cart";
@@ -45,9 +46,21 @@ public class CartController {
 	@GetMapping("/delete")
 	public String delete(Model model){
 		commodityService.findListAndDelete(userService.getCurrentUser().getId());
-		return "redirect:/cart";
+		return "/cart";
 	}
 	
+	@GetMapping("/commodityOrderDetails/{id}")
+	public String commodityOrderDetails(Model model, @PathVariable Long id){
+		model.addAttribute("commodity", commodityService.findOne(id));
+		return "user-commodityOrderDetails";
+	}
+	
+	@GetMapping("/deleteOne/{id}")
+	public String deleteOne(Model model, @PathVariable Long id){
+		commodityService.findAndDelete(userService.getCurrentUser().getId(), commodityService.findOne(id));
+		return "user-cart";
+	}
+
 	@GetMapping("/confirm")
 	public String confirm(Model model){
 		userService.sendMail("Confirm order", userService.getCurrentUser().getEmail(), "Riders on the Storm");

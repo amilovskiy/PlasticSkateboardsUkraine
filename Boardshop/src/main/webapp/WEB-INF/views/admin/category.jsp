@@ -13,6 +13,10 @@
 				<li class="active"><a href="/admin/category">Category</a></li>
 				<li><a href="/admin/commodity">Commodity</a></li>
 				<li><a href="/admin/producer">Producer</a></li>
+				<li><a href="/admin/color">Color</a></li>
+				<li><a href="/admin/wheel">Wheel</a></li>
+				<li><a href="/admin/truck">Truck</a></li>
+				<li><a href="/admin/deck">Deck</a></li>
 			</ul>
 		</div>
 	</div>

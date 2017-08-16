@@ -1,6 +1,8 @@
 package ua.boardshop.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +23,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Role;
@@ -31,7 +34,7 @@ import ua.boardshop.service.UserService;
 
 @Service("userDetailsService")
 public class UserServiceImpl implements UserService, UserDetailsService{
-
+	
 	@Autowired
 	private UserDAO userDAO;
 	
@@ -77,15 +80,28 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	}
 
 	@Override
+	@Transactional
 	public User order(Long id, Long idUser) {
+		
 		User user = userDAO.findById(idUser);
 		List<Commodity> commodities= user.getCommodities();
-		commodities.add(commodityDAO.findOne(id));
-//		user.setCommodities(commodities);
+		Commodity c = commodityDAO.findOne(id);
+		
+		if (!commodities.contains(c)) {
+			c.setCount(1);
+			commodities.add(c);
+		} else {
+			commodities.remove(c);
+			c.setCount(c.getCount() + 1);
+			commodities.add(c);
+		}
+		
+		user.setCommodities(commodities);
+	
 		userDAO.save(user);
 		return user;
 	}
-
+	
 	@Override
 	public List<User> findAll() {
 		return userDAO.findAll();
@@ -131,25 +147,13 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 	}
 
 	@Override
-	public int getAmountCommodities() {
-		int amount = 0;
-		User user = new User();
-		user = getCurrentUser();
-		List<Commodity> commodities = user.getCommodities();
-		for (Commodity commodity : commodities) {
-			amount++;
-		}
-		return amount;
+	public String findAm(Long id) {
+		
+		User user = userDAO.findById(id);
+		List<Commodity> list = user.getCommodities();
+		Integer amount = list.size();
+		String str = new String(amount.toString());
+		return str;
 	}
-
-//	@Override
-//	public Commodity findSame(Long id, Long userId) {
-//		int same = 0;
-//		User user = userDAO.findById(userId);
-//		List<Commodity> commodities= user.getCommodities();
-//		if (commodities.contains(commodityDAO.findOne(id))) {
-//			
-//		}
-//		return same;
-//	}		
+	
 }

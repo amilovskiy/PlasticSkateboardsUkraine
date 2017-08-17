@@ -67,6 +67,12 @@ public class ColorController {
 		return show(model, pageable, filter);
 	}
 	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status){
+		status.setComplete();
+		return "redirect:/admin/color";
+	}
+	
 	@PostMapping
 	public String save(@ModelAttribute("color")@Valid Color form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		if(br.hasErrors()){

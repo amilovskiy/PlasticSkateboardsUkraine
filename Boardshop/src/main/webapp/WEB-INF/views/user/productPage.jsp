@@ -36,8 +36,8 @@
 	                 	 </div>
                  	</div>
                  </sec:authorize>
-                <div class="col-md-1">
-				 	<a href="/cart"><span style="margin-top: 17px; color: white;" class="glyphicon glyphicon-shopping-cart"></span></a>
+				 <div class="col-md-1">
+					<a href="/cart"><span style="margin-top: 17px; color: white;" class="glyphicon glyphicon-shopping-cart"></span></a>
 				 	<span style="color: white;">(${amount})</span>
 				 </div>
 			</div>
@@ -51,7 +51,7 @@
 			<div class="row">
 				<div class="col-md-4">
 					<img class="img-rounded" width="400px" 
-								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}">
+						src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}">
 				</div>
 				<div class="col-md-4">
 					<br>
@@ -76,11 +76,12 @@
 					<c:out value="${commodity.description}" escapeXml="false"/>
 					<h2 style="color: #D3D3D3;"><b>Producer :</b></h2>
 					<img class="img-rounded" width="200px" 
-								src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">
-					
+						src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">	
 				</div>
 			</div>
 		</div>	
 	</div>
+	
 	<div id="productListHeight" class="col-md-6"></div>
+	
 </sec:authorize>

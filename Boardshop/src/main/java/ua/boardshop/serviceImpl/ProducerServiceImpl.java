@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Producer;
 import ua.boardshop.repository.ProducerDAO;
 import ua.boardshop.service.FileWriter;
@@ -43,7 +44,10 @@ public class ProducerServiceImpl implements ProducerService{
 	}
 
 	public void delete(Long id) {
-		producerDAO.delete(id);
+		Producer producer = producerDAO.findOne(id);
+		List<Commodity> list = producer.getCommodities();
+		if (list.isEmpty())
+			producerDAO.delete(id);
 	}
 
 	public Producer findOne(String name) {

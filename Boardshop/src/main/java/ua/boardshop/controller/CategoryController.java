@@ -75,6 +75,12 @@ public class CategoryController {
 		return show(model, pageable, filter);
 	}
 	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status){
+		status.setComplete();
+		return "redirect:/admin/category";
+	}
+	
 	@PostMapping
 	public String save(@ModelAttribute("category")@Valid Category form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		if(br.hasErrors()){

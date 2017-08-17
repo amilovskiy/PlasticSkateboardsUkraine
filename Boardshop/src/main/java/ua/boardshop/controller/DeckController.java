@@ -22,8 +22,6 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.entity.Deck;
-import ua.boardshop.entity.Item;
-import ua.boardshop.entity.Wheel;
 import ua.boardshop.service.DeckService;
 import ua.boardshop.validator.DeckValidator;
 
@@ -67,6 +65,12 @@ public class DeckController {
 		model.addAttribute("deck", deckService.findOne(id));
 		model.addAttribute("decks", deckService.findAll());
 		return show(model, pageable, filter);
+	}
+	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status){
+		status.setComplete();
+		return "redirect:/admin/deck";
 	}
 	
 	@PostMapping

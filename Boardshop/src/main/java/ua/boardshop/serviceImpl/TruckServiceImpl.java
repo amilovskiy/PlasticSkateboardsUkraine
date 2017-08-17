@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Truck;
 import ua.boardshop.repository.TruckDAO;
 import ua.boardshop.service.TruckService;
@@ -36,7 +37,10 @@ public class TruckServiceImpl  implements TruckService {
 
 	@Override
 	public void delete(Long id) {
-		truckDAO.delete(id);		
+		Truck truck = truckDAO.findOne(id);
+		List<Commodity> list = truck.getCommodities();
+		if (list.isEmpty())
+			truckDAO.delete(id);		
 	}
 
 	@Override

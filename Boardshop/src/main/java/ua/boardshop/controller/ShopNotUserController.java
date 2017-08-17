@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.dto.filter.ShopFilter;
 import ua.boardshop.editor.CategoryEditor;
 import ua.boardshop.editor.ColorEditor;
@@ -111,7 +110,13 @@ public class ShopNotUserController {
 	}
 	
 	@GetMapping("{id}")
-	public String showSelectCategory(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String showSelectCategory(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") ShopFilter filter){
+		model.addAttribute("colors", colorService.findAll());
+		model.addAttribute("decks", deckService.findAll());
+		model.addAttribute("wheels", wheelService.findAll());
+		model.addAttribute("trucks", truckService.findAll());
+		model.addAttribute("producers", producerService.findAll());
+		model.addAttribute("page", commodityService.findAll(filter, pageable));
 		model.addAttribute("items", itemService.findAll());
 		model.addAttribute("commodities", commodityService.findAll(id));
 		return "user-selectCategory";

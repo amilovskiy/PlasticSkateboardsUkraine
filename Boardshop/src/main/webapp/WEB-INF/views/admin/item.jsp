@@ -30,7 +30,9 @@
 			<div class="form-group">
 				<form:input path="search" placeholder="search" class="form-control" />
 				<custom:hiddenInputs excludeParams="search"/>
-				<button type="submit" class="btn btn-primary">Ok</button>
+				<br><br>
+				<button type="submit" class="btn btn-primary">Search</button>
+				<a href  = "/admin/item/cancel" class="btn btn-primary" >Cancel</a>
 			</div>
 		</form:form>
 	</div>

@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Wheel;
 import ua.boardshop.repository.WheelDAO;
 import ua.boardshop.service.WheelService;
@@ -36,7 +37,10 @@ public class WheelServiceImpl implements WheelService {
 
 	@Override
 	public void delete(Long id) {
-		wheelDAO.delete(id);
+		Wheel wheel = wheelDAO.findOne(id);
+		List<Commodity> list = wheel.getCommodities();
+		if (list.isEmpty())
+			wheelDAO.delete(id);
 	}
 
 	@Override

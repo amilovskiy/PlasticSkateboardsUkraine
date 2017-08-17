@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.dto.filter.ShopFilter;
 import ua.boardshop.editor.CategoryEditor;
 import ua.boardshop.editor.ColorEditor;
-import ua.boardshop.editor.CommodityEditor;
 import ua.boardshop.editor.DeckEditor;
 import ua.boardshop.editor.ItemEditor;
 import ua.boardshop.editor.ProducerEditor;
@@ -28,7 +25,6 @@ import ua.boardshop.editor.UserEditor;
 import ua.boardshop.editor.WheelEditor;
 import ua.boardshop.entity.Category;
 import ua.boardshop.entity.Color;
-import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Deck;
 import ua.boardshop.entity.Item;
 import ua.boardshop.entity.Producer;
@@ -115,7 +111,14 @@ public class ShopController {
 	}
 	
 	@GetMapping("{id}")
-	public String showSelectCategory(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String showSelectCategory(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") ShopFilter filter){
+		model.addAttribute("amount", userService.findAm(userService.getCurrentUser().getId()));
+		model.addAttribute("colors", colorService.findAll());
+		model.addAttribute("decks", deckService.findAll());
+		model.addAttribute("wheels", wheelService.findAll());
+		model.addAttribute("trucks", truckService.findAll());
+		model.addAttribute("producers", producerService.findAll());
+		model.addAttribute("page", commodityService.findAll(filter, pageable));
 		model.addAttribute("items", itemService.findAll());
 		model.addAttribute("commodities", commodityService.findAll(id));
 		return "user-selectCategory";

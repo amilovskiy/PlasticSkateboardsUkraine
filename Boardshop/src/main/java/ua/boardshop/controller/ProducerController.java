@@ -67,6 +67,12 @@ public class ProducerController {
 		return show(model, pageable, filter);
 	}
 	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status){
+		status.setComplete();
+		return "redirect:/admin/producer";
+	}
+	
 	@PostMapping
 	public String save(@ModelAttribute("producer")@Valid Producer form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
 		if(br.hasErrors()){

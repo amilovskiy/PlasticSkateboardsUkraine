@@ -21,11 +21,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ua.boardshop.dto.filter.BasicFilter;
-import ua.boardshop.entity.Item;
 import ua.boardshop.entity.Truck;
-import ua.boardshop.service.ItemService;
 import ua.boardshop.service.TruckService;
-import ua.boardshop.validator.ItemValidator;
 import ua.boardshop.validator.TruckValidator;
 
 @Controller
@@ -68,6 +65,12 @@ public class TruckController {
 		model.addAttribute("truck", truckService.findOne(id));
 		model.addAttribute("trucks", truckService.findAll());
 		return show(model, pageable, filter);
+	}
+	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status){
+		status.setComplete();
+		return "redirect:/admin/truck";
 	}
 	
 	@PostMapping

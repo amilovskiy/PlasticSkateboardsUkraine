@@ -12,7 +12,6 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.dto.filter.ShopFilter;
 import ua.boardshop.entity.Commodity;
 

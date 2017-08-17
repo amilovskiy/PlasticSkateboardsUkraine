@@ -1,8 +1,5 @@
 package ua.boardshop.dto.form;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import ua.boardshop.entity.Category;

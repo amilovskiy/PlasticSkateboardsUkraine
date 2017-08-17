@@ -46,7 +46,7 @@ public class CartController {
 	@GetMapping("/delete")
 	public String delete(Model model){
 		commodityService.findListAndDelete(userService.getCurrentUser().getId());
-		return "/cart";
+		return "redirect:/cart";
 	}
 	
 	@GetMapping("/commodityOrderDetails/{id}")

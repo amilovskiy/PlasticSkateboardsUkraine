@@ -130,6 +130,12 @@ public class CommodityController {
 		return "redirect:/admin/commodity"+getParams(pageable, filter);
 	}
 	
+	@RequestMapping("/cancel")
+	public String cancel(SessionStatus status){
+		status.setComplete();
+		return "redirect:/admin/commodity";
+	}
+	
 	@PostMapping
 	public String save(@ModelAttribute("commodity")@Valid CommodityForm form, BindingResult br, Model model, @PageableDefault Pageable pageable, SessionStatus status, @ModelAttribute("filter") BasicFilter filter){
 		if(br.hasErrors()){

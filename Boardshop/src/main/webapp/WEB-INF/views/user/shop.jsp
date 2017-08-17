@@ -63,7 +63,18 @@
 			<div class="row">
 				<div class="col-md-2">
 					<form:form class="form-inline" action="/user/shop" method="GET" modelAttribute="filter">
-						<custom:hiddenInputs excludeParams="min, max, search, producer, color, deck. wheel, truck"/>
+						<custom:hiddenInputs excludeParams="min, max, search, producer, color, deck, wheel, truck"/>
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">
+								Sort <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<custom:sort innerHtml="Sort by name" paramValue="name" />
+								<custom:sort innerHtml="Sort by price" paramValue="price" />
+							</ul>
+						</div><br>
+						<custom:size posibleSizes="1,2,5,10" size="${page.size}" />
 						<h3><label for="search" class="control-label">Search :</label></h3>
 						<div class="form-group">
 							<form:input path="search" style="width: 150px;" class="form-control" placeholder="name"/>
@@ -95,7 +106,7 @@
 						</div><br>
 						<div class="form-group"><br>
 							<button type="submit" class="btn btn-success">Search</button>
-							<a href  = "/user/shop/cancel" class="btn btn-primary" >Cancel</a>
+							<a href  = "/user/shop/cancel" class="btn btn-info" >Cancel</a>
 						</div>
 					</form:form>
 				</div>			
@@ -103,13 +114,21 @@
 				<div class="col-md-9">
 					<c:forEach items="${page.content}" var="commodity">								
 						<div class="row">
-							<div class="col-md-3 col-xs-3"><a href="/user/product_page/${commodity.id}">
-								<img class="img-rounded" width="100%" src="/images/commodity/${commodity.id}
-									.jpg?version=${commodity.version}"></a>
+							<div class="col-md-3 col-xs-3">
+								<a href="/user/product_page/${commodity.id}">
+									<img class="img-rounded" width="100%" src="/images/commodity/${commodity.id}
+										.jpg?version=${commodity.version}">
+								</a>
 							</div>
-							<div class="col-md-5"><div class="row"><h2><b><a href="/user/product_page/${commodity.id}">
-								${commodity.name}</a></b></h2></div><div class="row"><h4>${commodity.price}<b>
-								&#8372;</b></h4></div>${commodity.description}
+							<div class="col-md-5">
+								<div class="row">
+									<h2><b><a href="/user/product_page/${commodity.id}">
+										${commodity.name}</a></b></h2>
+								</div>
+								<div class="row">
+									<h4>${commodity.price}<b>&#8372;</b></h4>
+								</div>
+								${commodity.description}
 							</div>										
 						</div>
 						<div id="marTop" class="col-md-12"></div>
@@ -117,10 +136,12 @@
 				</div>	
 			</div>
 		</div>
+		
 		<div class="row">
 			<div class="col-md-12 col-xs-12 text-center">
 				<custom:pageable page="${page}" cell="<li></li>" container="<ul class='pagination'></ul>" />
 			</div>
-		</div>		
+		</div>
+				
 	</div>  
 </sec:authorize>

@@ -46,9 +46,10 @@
     </nav>
         
 	<div id="indexContentShopImg" class="col-md-12">  
+		
 		<div class="container-fluid">
 			<div class="row">
-				<a href="/user/shop"><img id="ind" src="/resources/img/shopMain2.jpg"></a>
+				<a href="/user/shop"><img id="ind" src="/resources/img/indexImg.jpg"></a>
 			</div>
 		</div>
 		
@@ -87,7 +88,10 @@
 				<img  src="/resources/img/Tkjzka627_A.png">
 			</div>
 		</div>
-	</div>              
+		
+	</div>
+	
+	<div id="productListHeight" class="col-md-6"></div>              
 </sec:authorize>
 
 <sec:authorize access="!isAuthenticated()">
@@ -106,9 +110,10 @@
 	</nav>
                    
 	<div id="indexContentShopImg" class="col-md-12">  
+		
 		<div class="container-fluid">
 			<div class="row">
-				<a href="/user/simple_shop"><img id="ind" src="/resources/img/shopMain2.jpg"></a>
+				<a href="/user/simple_shop"><img id="ind" src="/resources/img/indexImg.jpg"></a>
 			</div>
 		</div>
 		
@@ -147,8 +152,8 @@
 				<img  src="/resources/img/Tkjzka627_A.png">
 			</div>
 		</div>
-	</div>                         
+		
+	</div>
+	
+	<div id="productListHeight" class="col-md-6"></div>                         
 </sec:authorize>
-
-<div id="mainHeight" class="col-md-6"></div>
-

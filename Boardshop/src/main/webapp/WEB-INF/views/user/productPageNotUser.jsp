@@ -11,7 +11,7 @@
 			<div class="container">
 				<div class="col-md-10">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="/user/shop/notUser">Shop</a></li>
+						<li><a href="/user/simple_shop">Shop</a></li>
 					</ul>
 				</div>
 				<ul class="nav navbar-nav">
@@ -29,18 +29,18 @@
 			<div class="row">
 				<div class="col-md-4">
 					<img class="img-rounded" width="400px" 
-								src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}">
+						src="/images/commodity/${commodity.id}.jpg?version=${commodity.version}">
 				</div>
 				<div class="col-md-4">
 					<br>
 					<h1><b><c:out value="${commodity.name}" escapeXml="false"/></b></h1>
 					<h3><b><c:out value="${commodity.price}" escapeXml="false"/>&#160;$</b></h3><br>
 					<div class="jumbotron">
-					  		<h4><b>Want to buy something?</b></h4>
-					 		 <h5>Please sign up or enter login!</h5>
-					  		 <p><a class="btn btn-info btn-md" href="/registration" role="button">Sign Up</a>
-					  		 <a class="btn btn-warning btn-md" href="/login" role="button">Login</a></p>
-						</div>
+						<h4><b>Want to buy something?</b></h4>
+					 	<h5>Please sign up or enter login!</h5>
+					  	<p><a class="btn btn-info btn-md" href="/registration" role="button">Sign Up</a>
+					  	<a class="btn btn-warning btn-md" href="/login" role="button">Login</a></p>
+					</div>
 					<h2 style="color: #D3D3D3;"><b>Description</b></h2>
 					<b>Deck :</b>
 					<c:out value="${commodity.deck.name}" escapeXml="false"/><br>
@@ -59,11 +59,11 @@
 					<c:out value="${commodity.description}" escapeXml="false"/>
 					<h2 style="color: #D3D3D3;"><b>Producer :</b></h2>
 					<img class="img-rounded" width="200px" 
-								src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">
-					
+						src="/images/producer/${commodity.producer.id}.jpg?version=${commodity.producer.version}">	
 				</div>
 			</div>
 		</div>	
 	</div>
+	
 	<div id="productListHeight" class="col-md-6"></div>
 </sec:authorize>

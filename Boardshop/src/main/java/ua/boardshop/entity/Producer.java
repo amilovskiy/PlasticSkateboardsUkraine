@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
@@ -20,7 +21,7 @@ public class Producer extends AbstractEntity{
 	private Integer version;
 	
 	@OneToMany(
-	mappedBy="producer")
+	mappedBy="producer", fetch = FetchType.EAGER)
 	private List<Commodity> commodities= new ArrayList<Commodity>();
 	
 	public Producer(String name) {

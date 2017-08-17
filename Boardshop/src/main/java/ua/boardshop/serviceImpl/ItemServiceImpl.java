@@ -37,7 +37,10 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public void delete(Long id) {
-		itemDAO.delete(id);
+		Item item = itemDAO.findOne(id);
+		List<Category> list = item.getCategories();
+		if (list.isEmpty())
+			itemDAO.delete(id);
 	}
 
 	@Override

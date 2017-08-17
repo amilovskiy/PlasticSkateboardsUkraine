@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.entity.Category;
+import ua.boardshop.entity.Commodity;
 import ua.boardshop.repository.CategoryDAO;
 import ua.boardshop.service.CategoryService;
 import ua.boardshop.service.specification.CategorySpecification;
@@ -35,7 +36,10 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 	
 	public void delete(Long id) {
-		categoryDAO.delete(id);
+		Category category = categoryDAO.findOne(id);
+		List<Commodity> list = category.getCommodities();
+		if (list.isEmpty())
+			categoryDAO.delete(id);
 	}
 
 	public Category findOne(String name) {

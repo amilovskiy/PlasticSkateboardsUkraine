@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.entity.Commodity;
 import ua.boardshop.entity.Deck;
 import ua.boardshop.repository.DeckDAO;
 import ua.boardshop.service.DeckService;
@@ -36,7 +37,10 @@ public class DeckServiceImpl implements DeckService{
 
 	@Override
 	public void delete(Long id) {
-		deckDAO.delete(id);
+		Deck deck = deckDAO.findOne(id);
+		List<Commodity> list = deck.getCommodities();
+		if (list.isEmpty())
+			deckDAO.delete(id);
 	}
 
 	@Override

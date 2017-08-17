@@ -24,6 +24,6 @@ public class ItemValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "", "Can`t be empty, motherfucker!!! One more time and Samuel L. Jackson will kill you");
 		if(itemService.findOne(item.getName())!=null){
 			errors.rejectValue("name", "", "Already exist");
-		}			
+		}
 	}
 }

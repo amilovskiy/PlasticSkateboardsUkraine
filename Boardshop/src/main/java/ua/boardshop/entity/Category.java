@@ -14,7 +14,7 @@ public class Category extends AbstractEntity{
 	private String name;
 	
 	@OneToMany(
-	mappedBy="category")
+	mappedBy="category", fetch = FetchType.EAGER)
 	private List<Commodity> commodities = new ArrayList<Commodity>();
 	
 	@ManyToOne(fetch = FetchType.EAGER)

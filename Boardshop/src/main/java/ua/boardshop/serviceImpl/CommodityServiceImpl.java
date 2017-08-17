@@ -3,7 +3,6 @@ package ua.boardshop.serviceImpl;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.apache.commons.digester.plugins.strategies.FinderSetProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

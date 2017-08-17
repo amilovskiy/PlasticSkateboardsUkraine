@@ -9,12 +9,10 @@ import org.springframework.stereotype.Service;
 
 import ua.boardshop.dto.filter.BasicFilter;
 import ua.boardshop.entity.Color;
-import ua.boardshop.entity.Deck;
+import ua.boardshop.entity.Commodity;
 import ua.boardshop.repository.ColorDAO;
 import ua.boardshop.service.ColorService;
-import ua.boardshop.service.DeckService;
 import ua.boardshop.service.specification.ColorSpecification;
-import ua.boardshop.service.specification.ProducerSpecification;
 
 @Service
 public class ColorServiceImpl implements ColorService {
@@ -39,7 +37,10 @@ public class ColorServiceImpl implements ColorService {
 
 	@Override
 	public void delete(Long id) {
-		colorDAO.delete(id);
+		Color color = colorDAO.findOne(id);
+		List<Commodity> list = color.getCommodities();
+		if (list.isEmpty())
+			colorDAO.delete(id);
 	}
 
 	@Override

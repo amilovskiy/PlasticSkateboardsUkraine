@@ -123,10 +123,10 @@ public class CommodityServiceImpl implements CommodityService{
 	@Override
 	public String findTotalPrice(Long id) {
 		BigDecimal priceB;
-		float price = 0;
+		float price = 0f;
 		List<Commodity> commodities = findList(id);
 		for (Commodity commodity : commodities) {
-			int a = commodity.getPrice().intValue() * commodity.getCount().intValue();
+			float a = commodity.getPrice().floatValue() * commodity.getCount().floatValue();
 			BigDecimal co = new BigDecimal(a);
 			priceB = co;
 			price += priceB.floatValue();

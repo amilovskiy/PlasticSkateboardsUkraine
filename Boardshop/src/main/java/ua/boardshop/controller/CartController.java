@@ -58,7 +58,7 @@ public class CartController {
 	@GetMapping("/deleteOne/{id}")
 	public String deleteOne(Model model, @PathVariable Long id){
 		commodityService.findAndDelete(userService.getCurrentUser().getId(), commodityService.findOne(id));
-		return "user-cart";
+		return "redirect:/cart";
 	}
 
 	@GetMapping("/confirm")

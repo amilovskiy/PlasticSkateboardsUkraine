@@ -104,7 +104,7 @@
 										${commodity.name}</a></b></h2>
 								</div>
 								<div class="row">
-									<h4>${commodity.price}<b>&#8372;</b></h4>
+									<h4>${commodity.price}<b> $</b></h4>
 								</div>
 								${commodity.description}
 							</div>										

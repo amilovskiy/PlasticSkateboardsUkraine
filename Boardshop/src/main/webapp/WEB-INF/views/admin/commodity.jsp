@@ -28,14 +28,52 @@
 	<div class="row">
   		<div class="col-md-3 col-xs-12">
 			<form:form modelAttribute="filter" action="/admin/commodity" method="get" class="form-inline" >
-				<div class="form-group">
-					<form:input path="search" placeholder="search" class="form-control" />
-					<custom:hiddenInputs excludeParams="search"/>
-					<br><br>
-					<button type="submit" class="btn btn-primary">Search</button>
-					<a href  = "/admin/commodity/cancel" class="btn btn-primary" >Cancel</a>
-				</div>
+						<div class="dropdown">
+							<button class="btn btn-primary dropdown-toggle" type="button"
+								data-toggle="dropdown">
+								Sort<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<custom:sort innerHtml="Sort by name" paramValue="name" />
+								<custom:sort innerHtml="Sort by price" paramValue="price" />
+							</ul>
+						</div><br>
+						<custom:size posibleSizes="1,2,5,10" size="${page.size}" />
+						<h3><label for="search" class="control-label">Search :</label></h3>
+						<div class="form-group">
+							<form:input path="search" style="width: 150px;" class="form-control" placeholder="name"/>
+						</div><br>
+						<h3><label for="deckIds" class="control-label">Deck :</label></h3>
+						<div class="form-group">
+							<form:checkboxes style="display: block;" items="${decks}" path="deckIds" itemLabel="name" itemValue="id"/>
+						</div><br>
+						<h3><label for="colorIds" class="control-label">Color :</label></h3>
+						<div class="form-group">
+							<form:checkboxes style="display: block;" items="${colors}" path="colorIds" itemLabel="name" itemValue="id"/>
+						</div><br>
+						<h3><label for="truckIds" class="control-label">Truck :</label></h3>
+						<div class="form-group">
+							<form:checkboxes style="display: block;" items="${trucks}" path="truckIds" itemLabel="name" itemValue="id"/>
+						</div><br>
+						<h3><label for="wheelIds" class="control-label">Wheels :</label></h3>
+						<div class="form-group">
+							<form:checkboxes style="display: block;" items="${wheels}" path="wheelIds" itemLabel="name" itemValue="id"/>
+						</div><br>
+						<h3><label for="producerIds" class="control-label">Producer :</label></h3>
+						<div class="form-group">
+							<form:checkboxes style="display: block;" items="${producers}" path="producerIds" itemLabel="name" itemValue="id"/>
+						</div><br>
+						<h3><label for="min" class="control-label">Price :</label></h3>
+						<div class="form-group">
+							<form:input path="min" style="width: 60px;" class="form-control" placeholder="min"/>
+							<form:input path="max" style="width: 60px;" class="form-control" placeholder="max"/>
+						</div><br>
+						<div class="form-group"><br>
+							<button type="submit" class="btn btn-success">Search</button>
+							<a href  = "/admin/commodity/cancel" class="btn btn-info" >Cancel</a>
+						</div>
 			</form:form>
+
 		</div>
   		<div class="col-md-7 col-xs-12">
 			<form:form class="form-horizontal" action="/admin/commodity" method="POST" 
@@ -130,7 +168,7 @@
 					</div>
 				</div> 
 			</form:form>
-		</div> 
+		</div>
 	</div>
 
 	<div class="col-md-2 col-xs-12"></div>

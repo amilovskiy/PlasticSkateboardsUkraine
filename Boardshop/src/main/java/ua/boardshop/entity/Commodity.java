@@ -21,10 +21,10 @@ public class Commodity extends AbstractEntity{
 	@Column(name = "version", nullable = true)
 	private Integer version;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Producer producer;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Category category;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

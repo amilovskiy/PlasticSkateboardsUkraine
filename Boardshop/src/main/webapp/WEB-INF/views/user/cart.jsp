@@ -64,6 +64,7 @@
 						<div class="col-md-1"><a href="/cart/deleteOne/${commodity.id}"><img style ="hight: 50px; width: 50px;" src="/resources/img/removeIcon.png"></a></div></div>
 				</div>
 			</c:forEach>
+			<div id="marTop" class="col-md-12"></div> 
 		</div>
 		<div id="cartPageHeight" class="col-md-3">
 			<a class="btn btn-danger btn-lg" href="/cart/delete">Delete list</a>

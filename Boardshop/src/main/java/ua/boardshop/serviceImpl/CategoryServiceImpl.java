@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.dto.filter.CategoryAdminFilter;
 import ua.boardshop.entity.Category;
 import ua.boardshop.entity.Commodity;
 import ua.boardshop.repository.CategoryDAO;
 import ua.boardshop.service.CategoryService;
 import ua.boardshop.service.specification.CategorySpecification;
+import ua.boardshop.service.specification.CategorySpecificationAdmin;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
@@ -54,6 +56,11 @@ public class CategoryServiceImpl implements CategoryService{
 	@Override
 	public List<Category> findAllWhereIdItem(Long id) {
 		return categoryDAO.findAllWhereIdItem(id);
+	}
+
+	@Override
+	public Page<Category> findAll(CategoryAdminFilter filter, Pageable pageable) {
+		return categoryDAO.findAll(new CategorySpecificationAdmin(filter), pageable);
 	}
 	
 

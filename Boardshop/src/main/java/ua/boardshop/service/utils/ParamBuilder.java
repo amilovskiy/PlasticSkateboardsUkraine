@@ -5,6 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.dto.filter.CategoryAdminFilter;
 import ua.boardshop.dto.filter.ShopFilter;
 
 public interface ParamBuilder {
@@ -29,6 +30,25 @@ public interface ParamBuilder {
 		return buffer.toString();
 	}	
 	public static String getParams(Pageable pageable, ShopFilter filter){
+		StringBuilder buffer = new StringBuilder();
+		buffer.append("?page=");
+		buffer.append(String.valueOf(pageable.getPageNumber()+1));
+		buffer.append("&size=");
+		buffer.append(String.valueOf(pageable.getPageSize()));
+		if(pageable.getSort()!=null){
+			buffer.append("&sort=");
+			Sort sort = pageable.getSort();
+			sort.forEach((order)->{
+				buffer.append(order.getProperty());
+				if(order.getDirection()!=Direction.ASC)
+				buffer.append(",desc");
+			});
+		}
+		buffer.append("&search=");
+		buffer.append(filter.getSearch());
+		return buffer.toString();
+	}
+	public static String getParams(Pageable pageable, CategoryAdminFilter filter){
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("?page=");
 		buffer.append(String.valueOf(pageable.getPageNumber()+1));

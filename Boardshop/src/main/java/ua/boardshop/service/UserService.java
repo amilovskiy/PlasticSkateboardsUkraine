@@ -14,4 +14,6 @@ public interface UserService {
 	User getCurrentUser();	
 	void sendMail(String content, String email, String mailBody);
 	String findAm(Long id);
+	String confirmBody(Long userId);
+	boolean commodityListIsEmpty(Long id);
 }

@@ -24,77 +24,83 @@
 <div id="marTop" class="col-md-12"></div>
 
 <div id="indexContent" class="col-md-12">
-	<b>Image</b>
-	<div class="row">
+	<div class="container">
+		<div class="col-md-5">
+			<h3><b>Image :</b></h3>
+			<div class="row">
+				<div class="col-md-4">
+					<img class="img-rounded" width="300%" src="/images/commodity/${commodity.id}
+						.jpg?version=${commodity.version}"> 
+				</div>
+			</div>
+		</div>
 		<div class="col-md-6">
-			<div class="col-md-5 col-xs-5"><img class="img-rounded" width="100%" src="/images/commodity/${commodity.id}
-				.jpg?version=${commodity.version}"></div> 
+			<h3><b>Name :</b></h3>
+			<div class="row">
+				<div class="col-md-4">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Price :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.price}" escapeXml="false"/> $</b></h4>
+				</div>
+			</div>
+			<h3><b>Item :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.category.item.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Category :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.category.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Color :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.color.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Deck :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.deck.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Truck :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.truck.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Wheel :</b></h3>
+			<div class="row">
+				<div class="col-md-3">
+					<h4 style="color: #BDBDBD"><b><c:out value="${commodity.wheel.name}" escapeXml="false"/></b></h4>
+				</div>
+			</div>
+			<h3><b>Description :</b></h3>
+			<div class="row">
+				<h5 style="color: #BDBDBD"><b><c:out value="${commodity.description}" escapeXml="false"/></b></h5>	
+			</div>
+			<h3><b>Producer :</b></h3>
+			<div class="row">
+				<div class="col-md-4">
+					<img class="img-rounded" width="100%" src="/images/producer/${commodity.producer.id}
+						.jpg?version=${commodity.producer.version}">
+				</div>
+			</div>
 		</div>
+		
 	</div> 
-	<b>Name</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Price</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.price}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Item</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.category.item.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Category</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.category.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Color</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.color.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Deck</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.deck.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Truck</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.truck.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Wheel</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.wheel.name}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Description</b>
-	<div class="row">
-		<div class="col-md-5">
-			<c:out value="${commodity.description}" escapeXml="false"/>
-		</div>
-	</div>
-	<b>Producer</b>
-	<div class="row">
-		<div class="col-md-5">
-			<div class="col-md-3 col-xs-3"><img class="img-rounded" width="100%" src="/images/producer/${commodity.producer.id}
-				.jpg?version=${commodity.producer.version}"></div>
-		</div>
-	</div>
 	
-	<div id="productListHeight" class="col-md-6"></div>	
 </div>
+
+<div id="productListHeight" class="col-md-6"></div>
 
 <script>
 	$('label').each(function() {

@@ -153,5 +153,27 @@ public class UserServiceImpl implements UserService, UserDetailsService{
 		String str = new String(amount.toString());
 		return str;
 	}
+
+	@Override
+	public String confirmBody(Long userId) {
+		User user = userDAO.findById(userId);
+		List<Commodity> list = user.getCommodities();
+		String body = "ORDER :" + "\n";
+		float price = 0f;
+		for (Commodity c : list) {
+			price += c.getPrice().floatValue() * c.getCount().floatValue();
+			body += "	" + c.getName() + "  -  " + c.getPrice() + "$ " + " x " + c.getCount() + " = " + 
+					c.getPrice().floatValue() * c.getCount().floatValue() + "$" + "\n";
+		}
+		body += "\n" + "TOTAL PRICE :" + "\n" + "	" + String.format("%.2f", price) + "$" + "\n\n" + "Thank you for shopping!!!";
+		return body;
+	}
+
+	@Override
+	public boolean commodityListIsEmpty(Long id) {
+		User user = userDAO.findById(id);
+		List<Commodity> list = user.getCommodities();
+		return list.isEmpty();
+	}
 	
 }

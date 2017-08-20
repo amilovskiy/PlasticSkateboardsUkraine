@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.dto.filter.CategoryAdminFilter;
 import ua.boardshop.entity.Category;
 
 public interface CategoryService {
@@ -16,5 +17,6 @@ public interface CategoryService {
 	public void delete(Long id);
 	Category findOne(String name);
 	Page<Category> findAll(BasicFilter filter, Pageable pageable);
+	Page<Category> findAll(CategoryAdminFilter filter, Pageable pageable);
 	List<Category> findAllWhereIdItem(Long id);
 }

@@ -8,10 +8,9 @@
 <div id="indexContent" class="col-md-12">
 	<div class="text-center">
 		<div class="row">
-			<h1><b>Congratulations</b></h1>
+			<h1><b>Your cart is empty</b></h1>
 		</div>
-		<h3>Check your email</h3>
-		<h3><a href="/user/shop">Return to shop</a></h3>
+		<h3><a href="/user/shop">Please buy something</a></h3>
 	</div>
 	<div id="logRegHeight" class="col-md-6"></div>
 </div>

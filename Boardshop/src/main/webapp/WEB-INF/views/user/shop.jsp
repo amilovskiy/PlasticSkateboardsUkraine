@@ -67,7 +67,7 @@
 						<div class="dropdown">
 							<button class="btn btn-primary dropdown-toggle" type="button"
 								data-toggle="dropdown">
-								Sort <span class="caret"></span>
+								Sort<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<custom:sort innerHtml="Sort by name" paramValue="name" />

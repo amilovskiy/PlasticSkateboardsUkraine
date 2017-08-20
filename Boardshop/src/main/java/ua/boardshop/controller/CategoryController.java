@@ -19,7 +19,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
-import ua.boardshop.dto.filter.BasicFilter;
+import ua.boardshop.dto.filter.CategoryAdminFilter;
 import ua.boardshop.editor.ItemEditor;
 import ua.boardshop.entity.Category;
 import ua.boardshop.entity.Item;
@@ -50,25 +50,25 @@ public class CategoryController {
 	}
 	
 	@ModelAttribute("filter")
-	public BasicFilter getFilter(){
-		return new BasicFilter();
+	public CategoryAdminFilter getFilter(){
+		return new CategoryAdminFilter();
 	}
 	
 	@RequestMapping
-	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String show(Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") CategoryAdminFilter filter){
 		model.addAttribute("page",categoryService.findAll(filter, pageable));
 		model.addAttribute("items",itemService.findAll());
 		return "admin-category";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable Long id, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String delete(@PathVariable Long id, @PageableDefault Pageable pageable, @ModelAttribute("filter") CategoryAdminFilter filter){
 		categoryService.delete(id);
 		return "redirect:/admin/category"+getParams(pageable, filter);
 	}
 	
 	@GetMapping("/update/{id}")
-	public String update(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String update(@PathVariable Long id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") CategoryAdminFilter filter){
 		model.addAttribute("category", categoryService.findOne(id));
 		model.addAttribute("items",itemService.findAll());
 		model.addAttribute("categories", categoryService.findAll());
@@ -82,7 +82,7 @@ public class CategoryController {
 	}
 	
 	@PostMapping
-	public String save(@ModelAttribute("category")@Valid Category form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") BasicFilter filter){
+	public String save(@ModelAttribute("category")@Valid Category form, BindingResult br, Model model, SessionStatus status, @PageableDefault Pageable pageable, @ModelAttribute("filter") CategoryAdminFilter filter){
 		if(br.hasErrors()){
 			model.addAttribute("page", categoryService.findAll());
 			model.addAttribute("items",itemService.findAll());

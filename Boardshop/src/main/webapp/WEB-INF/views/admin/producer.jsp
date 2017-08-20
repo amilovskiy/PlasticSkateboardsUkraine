@@ -28,12 +28,14 @@
 	<div class="row">
 		<div class="col-md-3 col-xs-12">
 			<form:form modelAttribute="filter" action="/admin/producer" method="get" class="form-inline">
+				<custom:size posibleSizes="1,2,5,10" size="${page.size}" />
+				<h3><label for="search" class="control-label">Search :</label></h3>
 				<div class="form-group">
-					<form:input path="search" placeholder="search" class="form-control" />
-					<custom:hiddenInputs excludeParams="search"/>
-					<br><br>
-					<button type="submit" class="btn btn-primary">Search</button>
-					<a href  = "/admin/producer/cancel" class="btn btn-primary" >Cancel</a>
+					<form:input path="search" style="width: 150px;" class="form-control" placeholder="name"/>
+				</div><br>
+				<div class="form-group"><br>
+					<button type="submit" class="btn btn-success">Search</button>
+					<a href  = "/admin/producer/cancel" class="btn btn-info" >Cancel</a>
 				</div>
 			</form:form>
 		</div>

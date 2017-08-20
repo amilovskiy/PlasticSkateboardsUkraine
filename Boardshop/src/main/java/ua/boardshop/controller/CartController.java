@@ -63,8 +63,12 @@ public class CartController {
 
 	@GetMapping("/confirm")
 	public String confirm(Model model){
-		userService.sendMail("Confirm order", userService.getCurrentUser().getEmail(), "Riders on the Storm");
-		commodityService.findListAndDelete(userService.getCurrentUser().getId());
-		return "user-confirmOrder";
+		if (!userService.commodityListIsEmpty(userService.getCurrentUser().getId())) {
+			userService.sendMail("Confirm order", userService.getCurrentUser().getEmail(), userService.confirmBody(userService.getCurrentUser().getId()));
+			commodityService.findListAndDelete(userService.getCurrentUser().getId());
+			return "user-confirmOrder";
+		} else {
+			return "user-cartIsEmpty";
+		}	
 	}
 }

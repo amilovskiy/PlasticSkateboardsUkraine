@@ -31,5 +31,5 @@
 		<authentication-provider user-service-ref="userDetailsService">
 			<password-encoder ref="encoder"></password-encoder>
 		</authentication-provider>
-	</authentication-manager>
+	</authentication-manager>	
 </beans:beans>

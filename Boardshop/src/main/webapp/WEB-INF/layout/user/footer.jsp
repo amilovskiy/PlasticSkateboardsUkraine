@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link href="/resources/css/styleFooter.css" rel="stylesheet"/>
-
 <div class="row">
 	<footer id="footerStyle" class="navbar navbar-default">
+			<div class="container">
 			<div class="col-md-2">
 				<img class="logo2" src="/resources/img/Tkjzka627_A.png"> 
 			</div>
@@ -28,7 +28,8 @@
 					<span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;Lviv</span><br>
 					<span class="glyphicon glyphicon-time" aria-hidden="true">&nbsp;8:00a.m. - 7:00p.m.</span><br>
 					<span class="glyphicon glyphicon-bell" aria-hidden="true">&nbsp;mon.-fri.</span><br>
-				</div>
+				</div>	
+			</div>
 			</div>
 	</footer>
-</div>	
+</div>
